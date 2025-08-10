@@ -1,43 +1,45 @@
-"use client"
-import { useState } from "react";
-import ListView from "./listview";
+'use client';
 
+import { useState } from 'react';
+import ListView from './listview';
 
-export default function Counter(){
-  const [Count , setCount] =useState(0);
-  const [items, setItems] =useState<number[]>([]);
-  const[sortAsc, setSortAsc]=useState(true);
-  function increment(){
-    setCount(Count+1);
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  const [items, setItems] = useState<number[]>([]);
+  const [sortAsc, setSortAsc] = useState(true);
+
+  function increment() {
+    setCount(count + 1);
   }
-  function decrement(){
-if (Count>0){
-setCount(Count-1);
-}
-  }
-  function addItem(){
-    if(Count>0 && items.indexOf(Count)===-1){
-      let newItems=items.concat(Count);
-      if (sortAsc){
-        newItems=newItems.sort(function(a,b){
-          return a-b;
-        });
-      }else{
-        newItems=newItems.sort(function(a,b){
-          return b-a;
-        });
-      }
-      setItems(newItems);
-      setCount(0);
-    }else{
-      console.log('count is zero or already exists');
+
+  function decrement() {
+    if (count > 0) {
+      setCount(count - 1);
     }
   }
-   function toggleSort() {
+
+  function addItem() {
+    if (count > 0 && items.indexOf(count) === -1) {
+      let newItems = items.concat(count);
+
+      if (sortAsc) {
+        newItems = newItems.sort((a, b) => a - b);
+      } else {
+        newItems = newItems.sort((a, b) => b - a);
+      }
+
+      setItems(newItems);
+      setCount(0);
+    } else {
+      console.log('Count is zero or already exists');
+    }
+  }
+
+  function toggleSort() {
     const newSort = !sortAsc;
     setSortAsc(newSort);
 
-    const newItems = [...items];
+    let newItems = [...items];
 
     if (newSort) {
       newItems.sort((a, b) => a - b);
@@ -61,17 +63,17 @@ setCount(Count-1);
         <div className="flex flex-wrap justify-center items-center gap-4">
           <button
             onClick={decrement}
-            aria-label="Decrease Count"
+            aria-label="Decrease count"
             className="w-14 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition sm:w-16 sm:h-14"
           >
             –
           </button>
-          <span className="min-w-[3rem] text-center text-black text-4xl font-extrabold">
-            {Count}
+          <span className="min-w-[3rem] text-center text-4xl font-extrabold">
+            {count}
           </span>
           <button
             onClick={increment}
-            aria-label="Increase Count"
+            aria-label="Increase count"
             className="w-14 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition sm:w-16 sm:h-14"
           >
             +
@@ -79,7 +81,7 @@ setCount(Count-1);
         </div>
         <button
           onClick={addItem}
-          className="mt-8 ml-22 w-1/2 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+          className="mt-8 w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
         >
           Add
         </button>
@@ -91,13 +93,13 @@ setCount(Count-1);
           <div className="flex gap-3 flex-wrap">
             <button
               onClick={toggleSort}
-              className="px-2 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition flex items-center gap-2"
+              className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition flex items-center gap-2"
             >
-              Sort {sortAsc ? '⬆️' : '⬇️'}
+              Sort {sortAsc ? 'Descending' : 'Ascending'} {sortAsc ? '⬆️' : '⬇️'}
             </button>
             <button
               onClick={resetAll}
-              className="px-2 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition"
+              className="px-4 py-2 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition"
             >
               Reset
             </button>
