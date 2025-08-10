@@ -41,12 +41,12 @@ export default function Counter() {
     <main className="max-w-md mx-auto mt-10 space-y-8 px-4 sm:px-6">
     
       <section className="bg-white rounded-xl shadow p-6">
-        <h1 className="text-center text-2xl font-semibold mb-6">Counter</h1>
+        <h1 className="text-center text -black text-2xl font-semibold mb-6">Counter</h1>
         <div className="flex flex-wrap justify-center items-center gap-4">
           <button
             onClick={decrement}
             aria-label="Decrease count"
-            className="w-16 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+            className="w-16 h-12 text-3xl text-black font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition"
           >
             –
           </button>
@@ -56,7 +56,7 @@ export default function Counter() {
           <button
             onClick={increment}
             aria-label="Increase count"
-            className="w-16 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+            className="w-16 h-12 text-3xl text-black font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition"
           >
             +
           </button>
@@ -72,7 +72,7 @@ export default function Counter() {
  
       <section className="bg-white rounded-xl shadow p-6 space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
-          <h1 className="text-xl font-bold">ListView</h1>
+          <h1 className="text-xl text-black font-bold">ListView</h1>
           <div className="flex gap-3">
             <button
               onClick={toggleSort}
