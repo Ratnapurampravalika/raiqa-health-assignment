@@ -8,77 +8,89 @@ export default function Counter() {
   const [items, setItems] = useState<number[]>([]);
   const [sortAsc, setSortAsc] = useState(true);
 
-  function increment() {
-    setCount(prev => prev + 1);
-  }
+  const increment = () => setCount(prev => prev + 1);
+  const decrement = () => setCount(prev => (prev > 0 ? prev - 1 : 0));
 
-  function decrement() {
-    setCount(prev => (prev > 0 ? prev - 1 : 0));
-  }
-
-  function addItem() {
+  const addItem = () => {
     if (count > 0 && !items.includes(count)) {
-      const updated = [...items, count];
-      setItems(
-        sortAsc
-          ? updated.sort((a, b) => a - b)
-          : updated.sort((a, b) => b - a)
-      );
+      const updatedItems = [...items, count];
+      const sortedItems = sortAsc
+        ? updatedItems.sort((a, b) => a - b)
+        : updatedItems.sort((a, b) => b - a);
+      setItems(sortedItems);
       setCount(0);
     }
-  }
+  };
 
-  function toggleSort() {
-    const newOrder = !sortAsc;
-    setSortAsc(newOrder);
-    setItems(
-      newOrder
-        ? [...items].sort((a, b) => a - b)
-        : [...items].sort((a, b) => b - a)
-    );
-  }
+  const toggleSort = () => {
+    const newSortAsc = !sortAsc;
+    setSortAsc(newSortAsc);
+    const sortedItems = newSortAsc
+      ? [...items].sort((a, b) => a - b)
+      : [...items].sort((a, b) => b - a);
+    setItems(sortedItems);
+  };
+
+  const resetAll = () => {
+    setItems([]);
+    setCount(0);
+    setSortAsc(true);
+  };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow space-y-4">
-      
-      <div className="flex items-center justify-center gap-3">
-        <button
-          onClick={decrement}
-          className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-        >
-          –
-        </button>
-        <span className="text-2xl font-bold">{count}</span>
-        <button
-          onClick={increment}
-          className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-        >
-          +
-        </button>
-      </div>
-
-      
-      <div className="flex justify-center">
+    <main className="max-w-md mx-auto mt-10 space-y-8 px-4 sm:px-6">
+    
+      <section className="bg-white rounded-xl shadow p-6">
+        <h1 className="text-center text-2xl font-semibold mb-6">Counter</h1>
+        <div className="flex flex-wrap justify-center items-center gap-4">
+          <button
+            onClick={decrement}
+            aria-label="Decrease count"
+            className="w-16 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+          >
+            –
+          </button>
+          <span className="min-w-[3rem] text-center text-4xl font-extrabold">
+            {count}
+          </span>
+          <button
+            onClick={increment}
+            aria-label="Increase count"
+            className="w-16 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+          >
+            +
+          </button>
+        </div>
         <button
           onClick={addItem}
-          className="px-6 py-2 bg-blue-500 text-white rounded bg-blue-600"
+          className="mt-8 ml-23 w-1/2 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
         >
           Add
         </button>
-      </div>
+      </section>
 
-    
-      <div className="flex justify-center">
-        <button
-          onClick={toggleSort}
-          className="px-6 py-2 bg-red-600 text-white rounded bg-green-600"
-        >
-          Sort {sortAsc ? 'Descending' : 'Ascending'}
-        </button>
-      </div>
+ 
+      <section className="bg-white rounded-xl shadow p-6 space-y-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h1 className="text-xl font-bold">ListView</h1>
+          <div className="flex gap-3">
+            <button
+              onClick={toggleSort}
+              className="px-3 py-2 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition flex items-center gap-2"
+            >
+              Sort  {sortAsc ? '⬆️' : '⬇️'}
+            </button>
+            <button
+              onClick={resetAll}
+              className="px-3 py-2 bg-gray-600 text-white rounded-lg font-semibold hover:bg-gray-700 transition"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
 
-      
-      <ListView items={items} />
-    </div>
+        <ListView items={items} />
+      </section>
+    </main>
   );
 }
