@@ -61,7 +61,7 @@ setCount(Count-1);
         <div className="flex flex-wrap justify-center items-center gap-4">
           <button
             onClick={decrement}
-            aria-label="Decrease count"
+            aria-label="Decrease Count"
             className="w-14 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition sm:w-16 sm:h-14"
           >
             –
@@ -71,7 +71,7 @@ setCount(Count-1);
           </span>
           <button
             onClick={increment}
-            aria-label="Increase count"
+            aria-label="Increase Count"
             className="w-14 h-12 text-3xl font-bold bg-gray-200 rounded-lg hover:bg-gray-300 transition sm:w-16 sm:h-14"
           >
             +
