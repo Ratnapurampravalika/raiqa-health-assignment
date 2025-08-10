@@ -5,22 +5,17 @@ type ListViewProps = {
 };
 
 export default function ListView({ items }: ListViewProps) {
+  if (items.length === 0) {
+    return <p>No items added .</p>;
+  }
+
   return (
-    <div className="mt-5">
-      
-      <h2 className="text-lg text-black font-semibold mb-3">Added Numbers</h2>
-      {items.length === 0 ? (
-        <p className="text-black">No numbers added.</p>
-      ) : (
-        <ul className="list-disc list-inside space-y-1">
-          {items.map((num, i) => (
-            <li key={i} className="text-gray-800">
-              {num}
-            </li>
-          ))}
-        </ul>
-      )}
-    
-    </div>
+    <ul style={{ paddingLeft: 20 }}>
+      {items.map((item, index) => (
+        <li key={index} style={{ marginBottom: 6 }}>
+          {item}
+        </li>
+      ))}
+    </ul>
   );
 }
