@@ -41,7 +41,7 @@ export default function Counter() {
     <main className="max-w-md mx-auto mt-10 space-y-8 px-4 sm:px-6">
     
       <section className="bg-white rounded-xl shadow p-6">
-        <h1 className="text-center text -black text-2xl font-semibold mb-6">Counter</h1>
+        <h1 className="text-center text-black text-2xl font-semibold mb-6">Counter</h1>
         <div className="flex flex-wrap justify-center items-center gap-4">
           <button
             onClick={decrement}
@@ -50,7 +50,7 @@ export default function Counter() {
           >
             –
           </button>
-          <span className="min-w-[3rem] text-center text-4xl font-extrabold">
+          <span className="min-w-[3rem] text-black text-center text-4xl font-extrabold">
             {count}
           </span>
           <button
