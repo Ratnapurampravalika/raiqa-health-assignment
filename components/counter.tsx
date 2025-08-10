@@ -66,7 +66,7 @@ setCount(Count-1);
           >
             –
           </button>
-          <span className="min-w-[3rem] text-center text-black text-3xl font-extrabold">
+          <span className="min-w-[3rem] text-center text-black text-4xl font-extrabold">
             {Count}
           </span>
           <button
