@@ -108,7 +108,7 @@ import Counter from '../components/counter';
 
 export default function Homepage() {
   return (
-    <main className="min-h-screen bg-[#4897ae]">
+    <main className="min-h-screen bg-gray-500">
       <h1 className='text-center font-bold text-3xl pt-7 text-white'>Counter & List App</h1>
       <Counter />
     </main>
