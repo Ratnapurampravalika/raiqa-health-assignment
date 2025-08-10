@@ -37,7 +37,7 @@ setCount(Count-1);
     const newSort = !sortAsc;
     setSortAsc(newSort);
 
-    let newItems = [...items];
+    const newItems = [...items];
 
     if (newSort) {
       newItems.sort((a, b) => a - b);
